@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rnFeKTKKJoF7tVsUK3pjCxRNJR8oNF67wZBOyvbUw2NhnA9eB6tl2kjOVWCU6A6YATQ4bBYVvicLXhmr5eM1Mw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ryank\\source\\repos\\VideoFrameCapture\\VideoFrameCapture\\VideoFrameCapture.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ryank\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.22\\microsoft.windows.sdk.net.ref.10.0.19041.22.nupkg.sha512"
+  ],
+  "logs": []
+}
