@@ -10,6 +10,9 @@ using Windows.Media.MediaProperties;
 
 namespace VideoFrameCapture
 {
+    /// <summary>
+    /// Builds a MediaFrameReader object that can receive video frames from the specified system camera device.
+    /// </summary>
     public class FrameReaderBuilder
     {
         private MediaCapture captureDevice;
@@ -19,8 +22,6 @@ namespace VideoFrameCapture
         private string? mediaEncoding;
         private string? cameraName;
         private string? deviceId;
-
-        private MediaFrameReader? frameReader;
 
         public uint PreferredWidth 
         {
