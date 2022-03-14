@@ -59,7 +59,7 @@ namespace VideoFrameCapture
                         frameBytes = new byte[ms.Size];
                         await ms.ReadAsync(frameBytes.AsBuffer(), (uint)ms.Size, InputStreamOptions.None);
 
-                        // array now contains the JPEG data; write it out!
+                        // frameBytes now contains the JPEG data; write it out!
                         string fileName = @"C:\temp\video_frames\" + dtNow.Hour.ToString() + "h_" + dtNow.Minute.ToString() + "m_" + dtNow.Second.ToString() + "s_" + dtNow.Millisecond.ToString() + "ms.jpg";
                         File.WriteAllBytes(fileName, frameBytes);
                     }
