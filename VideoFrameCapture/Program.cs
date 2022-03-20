@@ -27,12 +27,13 @@ namespace VideoFrameCapture
             // try and create a file that has already been created by previous threads
             DateTime dtNow = DateTime.UtcNow;
 
-            //Console.WriteLine(DateTime.Now.Millisecond.ToString() + " " + Thread.CurrentThread.ManagedThreadId + " ==> Frame received");
+            Console.WriteLine(DateTime.Now.Millisecond.ToString() + " " + Thread.CurrentThread.ManagedThreadId + " ==> Frame received");
 
             StringBuilder filePath = new StringBuilder(@"C:\temp\video_frames\");
             MediaFrameReference mediaFrameReference;
             if ((mediaFrameReference = sender.TryAcquireLatestFrame()) != null)
             {
+                Console.WriteLine(DateTime.Now.Millisecond.ToString() + " " + Thread.CurrentThread.ManagedThreadId + " ==> Acquired latest frame");
                 VideoMediaFrame videoFrame = mediaFrameReference.VideoMediaFrame;
 
                 if (videoFrame != null)
@@ -54,7 +55,11 @@ namespace VideoFrameCapture
                             // We don't want to encode any more frames so commit it
                             await encoder.FlushAsync();
                         }
-                        catch (Exception ex) { return; }
+                        catch (Exception ex) 
+                        {
+                            Console.WriteLine(DateTime.Now.Millisecond.ToString() + " " + Thread.CurrentThread.ManagedThreadId + " ==> Caught exception");
+                            return; 
+                        }
 
                         frameBytes = new byte[ms.Size];
                         await ms.ReadAsync(frameBytes.AsBuffer(), (uint)ms.Size, InputStreamOptions.None);
@@ -86,7 +91,7 @@ namespace VideoFrameCapture
                 await frameReader.StartAsync();
 
                 // Let the main thread sleep while events are handled for 10 seconds
-                Thread.Sleep(10000);
+                Thread.Sleep(20000);
             }
 
         }
